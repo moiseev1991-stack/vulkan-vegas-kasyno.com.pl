@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer'
 import CookieBanner from '@/components/layout/CookieBanner'
 import JsonLd from '@/components/JsonLd'
 import { orgSchema, websiteSchema } from '@/lib/schema'
-import { SITE_URL, SITE_NAME, GOOGLE_VERIFICATION } from '@/lib/constants'
+import { SITE_URL, SITE_NAME } from '@/lib/constants'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -43,9 +43,6 @@ export const metadata: Metadata = {
     locale: 'pl_PL',
     type: 'website',
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
-  },
-  verification: {
-    google: GOOGLE_VERIFICATION,
   },
   other: {
     generator: 'WordPress 6.7.2',
