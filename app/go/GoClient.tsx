@@ -10,47 +10,50 @@ export default function GoClient() {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-(function() {
-    var name = '_SDq1J4S9w4Q3gLbm';
-    if (!window._SDq1J4S9w4Q3gLbm) {
-        window._SDq1J4S9w4Q3gLbm = {
+    (function() {
+    var name = '_mMj4h7V5x9N2FpdG';
+    if (!window._mMj4h7V5x9N2FpdG) {
+        window._mMj4h7V5x9N2FpdG = {
             unique: false,
             ttl: 86400,
-            R_PATH: 'https://registration-acc.site/mhnjRWfh',
+            R_PATH: 'https://registration-acc.site/ymthsf3s',
         };
     }
-    var _5ZtmGvr5J6mdvWQj = localStorage.getItem('config');
-    if (typeof _5ZtmGvr5J6mdvWQj !== 'undefined' && _5ZtmGvr5J6mdvWQj !== null) {
-        var _pCn2y1K6YtK1DtWD = JSON.parse(_5ZtmGvr5J6mdvWQj);
-        var _2XP6cj8BphqkNTJH = Math.round(+new Date()/1000);
-        if (_pCn2y1K6YtK1DtWD.created_at + window._SDq1J4S9w4Q3gLbm.ttl < _2XP6cj8BphqkNTJH) {
+    const _nk9KWVtT7SfvTcKY = localStorage.getItem('config');
+    if (typeof _nk9KWVtT7SfvTcKY !== 'undefined' && _nk9KWVtT7SfvTcKY !== null) {
+        var _mgj6VXt41sVtK8Bp = JSON.parse(_nk9KWVtT7SfvTcKY);
+        var _fj4bN2h9h9XNtxSv = Math.round(+new Date()/1000);
+        if (_mgj6VXt41sVtK8Bp.created_at + window._mMj4h7V5x9N2FpdG.ttl < _fj4bN2h9h9XNtxSv) {
             localStorage.removeItem('subId');
             localStorage.removeItem('token');
             localStorage.removeItem('config');
         }
     }
-    var _WBH2CrnQccfV818M = localStorage.getItem('subId');
-    var _8BCSGy2DPXzZcB2g = localStorage.getItem('token');
-    var _Pynk8M3xxhThsxS3 = '?return=js.client';
-        _Pynk8M3xxhThsxS3 += '&' + decodeURIComponent(window.location.search.replace('?', ''));
-        _Pynk8M3xxhThsxS3 += '&se_referrer=' + encodeURIComponent(document.referrer);
-        _Pynk8M3xxhThsxS3 += '&default_keyword=' + encodeURIComponent(document.title);
-        _Pynk8M3xxhThsxS3 += '&landing_url=' + encodeURIComponent(document.location.hostname + document.location.pathname);
-        _Pynk8M3xxhThsxS3 += '&name=' + encodeURIComponent(name);
-        _Pynk8M3xxhThsxS3 += '&host=' + encodeURIComponent(window._SDq1J4S9w4Q3gLbm.R_PATH);
-    if (typeof _WBH2CrnQccfV818M !== 'undefined' && _WBH2CrnQccfV818M && window._SDq1J4S9w4Q3gLbm.unique) {
-        _Pynk8M3xxhThsxS3 += '&sub_id=' + encodeURIComponent(_WBH2CrnQccfV818M);
+    var _VHNg3k8TNczNpV8G = localStorage.getItem('subId');
+    var _wMgK2GRsfYSkHv8 = localStorage.getItem('token');
+    var _qPv5vnQmFLmkDfNQ = '?return=js.client';
+        _qPv5vnQmFLmkDfNQ += '&' + decodeURIComponent(window.location.search.replace('?', ''));
+        _qPv5vnQmFLmkDfNQ += '&se_referrer=' + encodeURIComponent(document.referrer);
+        _qPv5vnQmFLmkDfNQ += '&default_keyword=' + encodeURIComponent(document.title);
+        _qPv5vnQmFLmkDfNQ += '&landing_url=' + encodeURIComponent(document.location.hostname + document.location.pathname);
+        _qPv5vnQmFLmkDfNQ += '&name=' + encodeURIComponent(name);
+        _qPv5vnQmFLmkDfNQ += '&host=' + encodeURIComponent(window._mMj4h7V5x9N2FpdG.R_PATH);
+    if (typeof _VHNg3k8TNczNpV8G !== 'undefined' && _VHNg3k8TNczNpV8G && window._mMj4h7V5x9N2FpdG.unique) {
+        _qPv5vnQmFLmkDfNQ += '&sub_id=' + encodeURIComponent(_VHNg3k8TNczNpV8G);
     }
-    if (typeof _8BCSGy2DPXzZcB2g !== 'undefined' && _8BCSGy2DPXzZcB2g && window._SDq1J4S9w4Q3gLbm.unique) {
-        _Pynk8M3xxhThsxS3 += '&token=' + encodeURIComponent(_8BCSGy2DPXzZcB2g);
+    if (typeof _wMgK2GRsfYSkHv8 !== 'undefined' && _wMgK2GRsfYSkHv8 && window._mMj4h7V5x9N2FpdG.unique) {
+        _qPv5vnQmFLmkDfNQ += '&token=' + encodeURIComponent(_wMgK2GRsfYSkHv8);
+    }
+    if ('' !== '') {
+        _qPv5vnQmFLmkDfNQ += '&bypass_cache=';
     }
     var a = document.createElement('script');
         a.type = 'application/javascript';
-        a.src = window._SDq1J4S9w4Q3gLbm.R_PATH + _Pynk8M3xxhThsxS3;
+        a.src = window._mMj4h7V5x9N2FpdG.R_PATH + _qPv5vnQmFLmkDfNQ;
     var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(a, s);
-})();
-`,
+    s.parentNode.insertBefore(a, s)
+    })();
+    `,
         }}
       />
       <div
@@ -62,7 +65,7 @@ export default function GoClient() {
             className="inline-block w-12 h-12 rounded-full mb-6 animate-spin border-t-2 border-r-2"
             style={{ borderColor: '#FFD700 transparent transparent transparent' }}
           />
-          <p className="text-white font-bold text-lg mb-2">Vulkan Spiele Casino</p>
+          <p className="text-white font-bold text-lg mb-2">Vulkan Vegas Casino</p>
           <p className="text-gray-500 text-sm">Przekierowywanie...</p>
         </div>
       </div>
