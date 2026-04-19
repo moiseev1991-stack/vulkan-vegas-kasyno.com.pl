@@ -1,52 +1,47 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
+const STORAGE_KEY = 'cookie_consent_vv_pl'
+
 export default function CookieBanner() {
-  const [show, setShow] = useState(false)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    if (localStorage.getItem('cookie_accepted')) return
-
-    const onScroll = () => {
-      // показываем после прокрутки на высоту экрана
-      if (window.scrollY >= window.innerHeight * 0.8) {
-        setShow(true)
-        window.removeEventListener('scroll', onScroll)
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const consent = localStorage.getItem(STORAGE_KEY)
+    if (!consent) setVisible(true)
   }, [])
 
-  const accept = () => {
-    localStorage.setItem('cookie_accepted', '1')
-    setShow(false)
+  if (!visible) return null
+
+  const accept = (all: boolean) => {
+    localStorage.setItem(STORAGE_KEY, all ? 'all' : 'essential')
+    setVisible(false)
   }
 
-  if (!show) return null
-
   return (
-    <div className="fixed bottom-20 md:bottom-4 right-4 z-50 max-w-sm bg-surface border border-white/10 rounded-xl p-4 shadow-2xl">
-      <p className="text-white/80 text-xs mb-3 leading-relaxed">
-        Używamy plików cookie, aby poprawić Twoje doświadczenie. Korzystając z naszej strony, wyrażasz zgodę na ich użycie.{' '}
-        <Link href="#" className="text-gold hover:underline">Polityka cookie</Link>
-      </p>
-      <div className="flex gap-2">
-        <button
-          onClick={accept}
-          className="flex-1 bg-gold text-black text-xs font-bold py-2 rounded-lg hover:bg-gold/90 transition-colors"
-        >
-          Akceptuj
-        </button>
-        <button
-          onClick={() => setShow(false)}
-          className="flex-1 border border-white/20 text-white/60 text-xs py-2 rounded-lg hover:bg-white/5 transition-colors"
-        >
-          Odrzuć
-        </button>
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-surface border-t border-white/15 p-4 shadow-2xl">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <p className="text-gray-300 text-sm flex-1 leading-relaxed">
+          Używamy plików cookies zgodnie z{' '}
+          <Link href="/polityka-prywatnosci" className="underline hover:text-white">polityką prywatności</Link>.
+          Kliknij &quot;Akceptuj&quot; aby wyrazić zgodę na wszystkie pliki cookies.
+        </p>
+        <div className="flex gap-2 flex-shrink-0">
+          <button
+            onClick={() => accept(false)}
+            className="text-sm border border-white/20 text-gray-300 hover:text-white rounded-lg px-4 py-2 transition-colors"
+          >
+            Tylko niezbędne
+          </button>
+          <button
+            onClick={() => accept(true)}
+            className="text-sm bg-gold text-black font-bold rounded-lg px-4 py-2 hover:bg-gold-light transition-colors"
+          >
+            Akceptuj wszystkie
+          </button>
+        </div>
       </div>
     </div>
   )

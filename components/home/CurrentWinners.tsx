@@ -1,56 +1,38 @@
-import { Winner } from '@/data/winners'
+import Image from 'next/image'
+import type { Winner } from '@/data/winners'
 
-interface CurrentWinnersProps {
-  winners: Winner[]
+function WinnerCard({ winner }: { winner: Winner }) {
+  return (
+    <div className="flex-shrink-0 flex items-center gap-3 bg-surface-card border border-white/10 rounded-xl px-4 py-2.5 mr-4">
+      <div className="relative w-8 h-8 rounded-lg overflow-hidden flex-shrink-0">
+        <Image src={winner.gameImage} alt={winner.gameTitle} fill className="object-cover" sizes="32px" />
+      </div>
+      <div>
+        <p className="text-white font-bold text-sm leading-tight">
+          {winner.amount.toLocaleString('pl-PL', { minimumFractionDigits: 2 })} {winner.currency}
+        </p>
+        <p className="text-gray-400 text-xs">
+          {winner.nick} · {winner.gameTitle}
+        </p>
+      </div>
+    </div>
+  )
 }
 
-function formatWin(amount: number, currency: string): string {
-  const formatted = amount.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-  const symbols: Record<string, string> = { EUR: '€', PLN: 'zł', RON: 'RON' }
-  return `${formatted} ${symbols[currency] || currency}`
-}
-
-export default function CurrentWinners({ winners }: CurrentWinnersProps) {
-  const marqueeItems = [...winners, ...winners]
+export default function CurrentWinners({ winners }: { winners: Winner[] }) {
+  const doubled = [...winners, ...winners]
 
   return (
-    <section className="py-4">
+    <section className="mb-10">
       <div className="flex items-center gap-2 mb-3">
-        <span>🎖️</span>
-        <h2 className="text-base font-bold text-white">Ostatnie wygrane</h2>
-        <span className="w-1.5 h-1.5 bg-brand rounded-full animate-pulse" />
+        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+        <h2 className="text-white font-bold text-base">Ostatnie wygrane</h2>
       </div>
-
-      <div
-        className="rounded-xl overflow-hidden"
-        style={{ background: '#0f0002', border: '1px solid #270005' }}
-      >
-        <div className="relative overflow-hidden">
-          <div className="flex animate-marquee" style={{ width: 'max-content' }}>
-            {marqueeItems.map((winner, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 px-5 py-3 shrink-0"
-                style={{ borderRight: '1px solid #270005' }}
-              >
-                <div className="w-10 h-10 rounded-md overflow-hidden flex-shrink-0 bg-[#190003]">
-                  <img
-                    src={winner.gameImage}
-                    alt={winner.gameTitle}
-                    className="w-full h-full object-cover"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-                  />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-white">{formatWin(winner.amount, winner.currency)}</p>
-                  <p className="text-[11px] text-gray-500">
-                    wygrał(a) <span className="text-gray-400">{winner.nick}</span>
-                  </p>
-                  <p className="text-[10px] text-gold cursor-pointer hover:underline">w {winner.gameTitle}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="overflow-hidden">
+        <div className="flex animate-marquee" style={{ width: 'max-content' }}>
+          {doubled.map((w, i) => (
+            <WinnerCard key={i} winner={w} />
+          ))}
         </div>
       </div>
     </section>

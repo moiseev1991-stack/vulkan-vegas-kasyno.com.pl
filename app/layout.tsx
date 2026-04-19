@@ -4,45 +4,63 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CookieBanner from '@/components/layout/CookieBanner'
-import MobileBottomNav from '@/components/layout/MobileBottomNav'
+import JsonLd from '@/components/JsonLd'
+import { orgSchema, websiteSchema } from '@/lib/schema'
+import { SITE_URL, SITE_NAME, GOOGLE_VERIFICATION } from '@/lib/constants'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vulkanspiele-casino-pl.pl'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'VulkanSpiele Casino PL — Automaty, Live Casino & Zakłady Sportowe',
-    template: '%s | VulkanSpiele PL',
+    default: 'Vulkan Vegas Casino Polska: Oficjalna Strona Kasyna 2026',
+    template: `%s | ${SITE_NAME}`,
   },
-  description: 'Zagraj w najlepsze automaty online, kasyno na żywo i obstaw zakłady sportowe w VulkanSpiele. Bonus powitalny do 2500€ + 350 darmowych spinów.',
+  description: 'Vulkan Vegas Casino Polska to oficjalna strona kasyna online dla polskich graczy w 2026 roku. Pełna recenzja Vulkan Vegas: licencja, opinie, bezpieczeństwo oraz ocena ekspertów.',
+  alternates: {
+    canonical: '/',
+    languages: { 'pl-PL': '/' },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+    },
+  },
+  authors: [{ name: 'Redakcja Vulkan Vegas Polska', url: `${SITE_URL}/zespol` }],
+  publisher: SITE_NAME,
+  formatDetection: { email: false, address: false, telephone: false },
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
   },
   openGraph: {
-    siteName: 'VulkanSpiele PL',
+    siteName: SITE_NAME,
     locale: 'pl_PL',
     type: 'website',
-  },
-  robots: {
-    index: true,
-    follow: true,
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
   verification: {
-    google: 'pHUu9ASMrURLfschf-Hpz-2J30ylTXtvg4frOx3NQRE',
+    google: GOOGLE_VERIFICATION,
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={inter.variable}>
+      <head>
+        <JsonLd data={orgSchema} />
+        <JsonLd data={websiteSchema} />
+      </head>
       <body className="bg-bgDark text-white antialiased font-sans min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 pb-16 md:pb-0">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
-        <MobileBottomNav />
       </body>
     </html>
   )

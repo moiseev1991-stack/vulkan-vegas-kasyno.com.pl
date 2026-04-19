@@ -1,149 +1,138 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import BreadcrumbList from '@/components/BreadcrumbList'
+import LastUpdated from '@/components/LastUpdated'
+import JsonLd from '@/components/JsonLd'
+import { webPageSchema } from '@/lib/schema'
+import { PUBLISHED_DATE, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Polityka Prywatności — RODO i Ochrona Danych Osobowych',
-  description: 'Polityka prywatności VulkanSpiele: przetwarzanie danych osobowych zgodnie z RODO, rodzaje gromadzonych danych, prawa użytkownika i kontakt do administratora.',
+  title: 'Polityka Prywatności Vulkan Vegas Polska: RODO oraz Cookies',
+  description: 'Polityka prywatności serwisu Vulkan Vegas Polska 2026 zgodna z RODO. Jak przetwarzamy dane osobowe polskich graczy, pliki cookies, prawa użytkownika oraz kontakt z redakcją.',
+  alternates: { canonical: '/polityka-prywatnosci' },
   openGraph: {
-    title: 'Polityka Prywatności — RODO i Ochrona Danych Osobowych',
-    description: 'Przetwarzanie danych zgodnie z RODO, prawa użytkownika (dostęp, usunięcie, sprzeciw) i kontakt do administratora.',
-    url: 'https://vulkanspiele-casino-pl.pl/polityka-prywatnosci/',
+    title: 'Polityka Prywatności Vulkan Vegas Polska: RODO oraz Cookies',
+    description: 'Polityka prywatności serwisu Vulkan Vegas Polska 2026 zgodna z RODO. Jak przetwarzamy dane osobowe polskich graczy, pliki cookies, prawa użytkownika oraz kontakt z redakcją.',
+    url: 'https://vulkan-vegas-kasyno.com.pl/polityka-prywatnosci',
+    type: 'article',
+    locale: 'pl_PL',
   },
 }
 
-export default function PolitykaPrywatnosci() {
+export default function PolitykaPrywatnosciPage() {
   return (
-    <main className="container mx-auto px-4 py-12 max-w-3xl">
-      <h1 className="text-3xl font-black text-white mb-2">Polityka Prywatności</h1>
-      <p className="text-white/40 text-sm mb-10">Ostatnia aktualizacja: 1 kwietnia 2026</p>
+    <>
+      <JsonLd data={webPageSchema('Polityka Prywatności Vulkan Vegas Polska: RODO oraz Cookies', '/polityka-prywatnosci')} />
 
-      <div className="space-y-10 text-white/70 text-sm leading-relaxed">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <BreadcrumbList items={[
+          { name: 'Home', url: '/' },
+          { name: 'Polityka prywatności', url: '/polityka-prywatnosci' },
+        ]} />
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">1. Administrator danych osobowych</h2>
-          <p>
-            Administratorem danych osobowych zbieranych za pośrednictwem serwisu VulkanSpiele
-            (dalej: &bdquo;Serwis&rdquo;), dostępnego pod adresem vulkanspiele-casino-pl.pl, jest jego operator.
-            Serwis funkcjonuje wyłącznie jako portal afiliacyjno-informacyjny i nie prowadzi
-            działalności hazardowej, nie przyjmuje wpłat ani nie przetwarza danych płatniczych.
-          </p>
-          <p className="mt-2">
-            We wszelkich kwestiach dotyczących prywatności i ochrony danych osobowych można skontaktować
-            się z administratorem pod adresem:{' '}
-            <a href="mailto:support@vulkanspiele-casino-pl.pl" className="text-gold hover:underline">support@vulkanspiele-casino-pl.pl</a>.
-          </p>
-        </section>
+        <LastUpdated date={PUBLISHED_DATE} reviewedBy="Marek Kowalski" />
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">2. Podstawa prawna</h2>
-          <p>
-            Przetwarzanie danych odbywa się zgodnie z Rozporządzeniem (UE) 2016/679 (RODO) oraz
-            krajowymi przepisami o ochronie danych osobowych. Podstawy przetwarzania obejmują:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Art. 6 ust. 1 lit. a RODO — dobrowolna zgoda użytkownika (m.in. cookies analityczne i marketingowe);</li>
-            <li>Art. 6 ust. 1 lit. f RODO — uzasadniony interes administratora (bezpieczeństwo i statystyki Serwisu);</li>
-            <li>Art. 6 ust. 1 lit. c RODO — wypełnienie obowiązków wynikających z przepisów prawa.</li>
-          </ul>
-        </section>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+          Polityka Prywatności Vulkan Vegas Polska 2026: RODO oraz Dane
+        </h1>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">3. Jakie dane zbieramy?</h2>
-          <p>W trakcie korzystania z Serwisu mogą być zbierane następujące kategorie danych:</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Dane techniczne: adres IP, rodzaj i wersja przeglądarki, system operacyjny, rozdzielczość ekranu;</li>
-            <li>Dane o aktywności: odwiedzane podstrony, czas spędzony na stronie, źródło ruchu, klikane linki;</li>
-            <li>Pliki cookies i podobne technologie — szczegóły w <Link href="/polityka-cookie" className="text-gold hover:underline">Polityce Cookie</Link>;</li>
-            <li>Dane podane dobrowolnie w formularzach kontaktowych (imię, adres e-mail, treść wiadomości).</li>
-          </ul>
-          <p className="mt-2">
-            Serwis nie zbiera i nie przetwarza szczególnych kategorii danych osobowych (tzw. danych wrażliwych),
-            takich jak dane o zdrowiu, poglądach politycznych czy przekonaniach religijnych.
-          </p>
-        </section>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Niniejsza polityka prywatności opisuje zasady przetwarzania danych osobowych użytkowników serwisu
+          vulkan-vegas-kasyno.com.pl, zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679
+          (RODO/GDPR) z dnia 27 kwietnia 2016 roku.
+        </p>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">4. Cele przetwarzania</h2>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Zapewnienie prawidłowego działania technicznego Serwisu;</li>
-            <li>Analiza ruchu i zachowań użytkowników w celu ulepszania treści i funkcjonalności;</li>
-            <li>Odpowiadanie na zapytania przesłane drogą elektroniczną;</li>
-            <li>Wyświetlanie spersonalizowanych treści i reklam (wyłącznie po udzieleniu zgody);</li>
-            <li>Zapobieganie nadużyciom i ochrona bezpieczeństwa Serwisu;</li>
-            <li>Rozliczenia prowizji afiliacyjnych z partnerami kasyn.</li>
-          </ul>
-        </section>
+        <div className="space-y-8">
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Administrator danych</h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Administratorem danych osobowych jest redakcja serwisu vulkan-vegas-kasyno.com.pl.
+              Kontakt w sprawach danych osobowych: <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand hover:underline">{CONTACT_EMAIL}</a>
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">5. Czas przechowywania danych</h2>
-          <p>
-            Dane osobowe przechowujemy wyłącznie przez okres niezbędny do realizacji celów, dla których
-            zostały zgromadzone. Dane analityczne są anonimizowane lub usuwane po 26 miesiącach.
-            Dane z formularzy kontaktowych przechowujemy przez 12 miesięcy od udzielenia ostatniej odpowiedzi.
-            Po wycofaniu zgody przez użytkownika dane objęte tą zgodą są usuwane niezwłocznie.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Jakie dane zbieramy</h2>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li><strong className="text-gray-200">Dane z formularza kontaktowego:</strong> imię, adres email, treść wiadomości</li>
+              <li><strong className="text-gray-200">Dane analityczne:</strong> adres IP, typ przeglądarki, strony odwiedzane, czas sesji (anonimizowane)</li>
+              <li><strong className="text-gray-200">Pliki cookies:</strong> identyfikatory sesji, preferencje użytkownika, dane analityczne</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">6. Udostępnianie danych podmiotom trzecim</h2>
-          <p>
-            Dane użytkowników mogą być przekazywane wyłącznie zaufanym podmiotom, z którymi współpracujemy:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Dostawcy usług analitycznych (Google Analytics) — dane zagregowane i zanonimizowane;</li>
-            <li>Dostawcy infrastruktury hostingowej — w zakresie niezbędnym do utrzymania Serwisu;</li>
-            <li>Partnerzy afiliacyjni — wyłącznie dane identyfikujące ruch (kliknięcia, konwersje) bez danych osobowych.</li>
-          </ul>
-          <p className="mt-2">
-            Administrator nie sprzedaje, nie wynajmuje ani w żaden inny sposób nie komercjalizuje
-            danych osobowych użytkowników na rzecz podmiotów trzecich.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Cel przetwarzania</h2>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>Odpowiedź na zapytania z formularza kontaktowego (art. 6 ust. 1 lit. b RODO)</li>
+              <li>Analiza ruchu na stronie i optymalizacja serwisu (art. 6 ust. 1 lit. f RODO)</li>
+              <li>Wyświetlanie treści reklamowych (art. 6 ust. 1 lit. a RODO — za zgodą)</li>
+              <li>Przestrzeganie obowiązków prawnych (art. 6 ust. 1 lit. c RODO)</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">7. Przekazywanie danych poza EOG</h2>
-          <p>
-            Niektórzy z naszych dostawców (np. Google) mogą przetwarzać dane w krajach spoza Europejskiego
-            Obszaru Gospodarczego. Przekazywanie odbywa się wyłącznie na podstawie odpowiednich zabezpieczeń,
-            takich jak standardowe klauzule umowne zatwierdzone przez Komisję Europejską.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Podstawa prawna</h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Przetwarzamy dane na podstawie zgody użytkownika (art. 6 ust. 1 lit. a RODO), wykonania umowy
+              lub działań przedumownych (lit. b), uzasadnionego interesu administratora (lit. f) oraz
+              obowiązku prawnego (lit. c).
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">8. Prawa użytkownika</h2>
-          <p>Na mocy RODO przysługują Ci następujące prawa:</p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong className="text-white">Prawo dostępu</strong> — możesz zażądać informacji o tym, jakie dane na Twój temat przetwarzamy;</li>
-            <li><strong className="text-white">Prawo do sprostowania</strong> — możesz zażądać poprawienia nieprawidłowych lub uzupełnienia niekompletnych danych;</li>
-            <li><strong className="text-white">Prawo do usunięcia</strong> — w określonych przypadkach możesz żądać trwałego usunięcia danych;</li>
-            <li><strong className="text-white">Prawo do ograniczenia przetwarzania</strong> — możesz zażądać zawieszenia przetwarzania Twoich danych;</li>
-            <li><strong className="text-white">Prawo do przenoszenia danych</strong> — możesz otrzymać swoje dane w ustrukturyzowanym formacie;</li>
-            <li><strong className="text-white">Prawo do sprzeciwu</strong> — możesz sprzeciwić się przetwarzaniu opartemu na uzasadnionym interesie;</li>
-            <li><strong className="text-white">Prawo do wycofania zgody</strong> — bez wpływu na legalność przetwarzania sprzed wycofania.</li>
-          </ul>
-          <p className="mt-2">
-            Aby skorzystać z przysługujących praw, skontaktuj się z nami:{' '}
-            <a href="mailto:support@vulkanspiele-casino-pl.pl" className="text-gold hover:underline">support@vulkanspiele-casino-pl.pl</a>.
-            Odpowiemy w ciągu 30 dni.
-          </p>
-          <p className="mt-2">
-            Masz również prawo złożenia skargi do Urzędu Ochrony Danych Osobowych (UODO),
-            ul. Stawki 2, 00-193 Warszawa —{' '}
-            <a href="https://uodo.gov.pl" className="text-gold hover:underline" target="_blank" rel="noopener noreferrer">uodo.gov.pl</a>.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Okres przechowywania</h2>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>Dane z formularza kontaktowego: do 12 miesięcy od odpowiedzi</li>
+              <li>Dane analityczne: do 14 miesięcy (standard Google Analytics)</li>
+              <li>Pliki cookies: od sesji do 2 lat, zależnie od typu</li>
+            </ul>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">9. Zmiany polityki prywatności</h2>
-          <p>
-            Niniejsza Polityka może być aktualizowana w miarę zmian prawnych, technologicznych lub
-            organizacyjnych. Każda nowa wersja będzie publikowana na tej stronie z aktualną datą.
-            W przypadku istotnych zmian użytkownicy mogą zostać poinformowani za pośrednictwem bannera
-            na stronie głównej Serwisu.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Pliki cookies</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-3">
+              Serwis używa plików cookies w następujących celach:
+            </p>
+            <div className="space-y-2">
+              {[
+                { type: 'Niezbędne', desc: 'Działanie serwisu, zapamiętanie zgody na cookies. Nie wymagają zgody.' },
+                { type: 'Analityczne', desc: 'Google Analytics — analiza ruchu, anonimowe statystyki. Wymagają zgody.' },
+                { type: 'Marketingowe', desc: 'Śledzenie konwersji z linków afiliacyjnych. Wymagają zgody.' },
+              ].map((c) => (
+                <div key={c.type} className="bg-surface-card border border-white/10 rounded-lg p-3">
+                  <span className="text-white font-medium text-sm">{c.type}: </span>
+                  <span className="text-gray-400 text-sm">{c.desc}</span>
+                </div>
+              ))}
+            </div>
+          </section>
 
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Prawa użytkownika</h2>
+            <p className="text-gray-300 text-sm leading-relaxed mb-2">Na podstawie RODO przysługują Ci następujące prawa:</p>
+            <ul className="space-y-1 text-sm text-gray-300">
+              {[
+                'Prawo dostępu do swoich danych (art. 15 RODO)',
+                'Prawo do sprostowania danych (art. 16 RODO)',
+                'Prawo do usunięcia danych ("prawo do bycia zapomnianym") (art. 17 RODO)',
+                'Prawo do ograniczenia przetwarzania (art. 18 RODO)',
+                'Prawo do przenoszenia danych (art. 20 RODO)',
+                'Prawo do sprzeciwu (art. 21 RODO)',
+                'Prawo do skargi do UODO (Urząd Ochrony Danych Osobowych)',
+              ].map((right, i) => (
+                <li key={i} className="flex gap-2"><span className="text-brand flex-shrink-0">→</span>{right}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">Kontakt w sprawie danych</h2>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              W sprawach dotyczących danych osobowych skontaktuj się z nami: <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand hover:underline">{CONTACT_EMAIL}</a>.
+              Odpowiadamy w ciągu 30 dni od otrzymania zgłoszenia.
+            </p>
+          </section>
+        </div>
       </div>
-    </main>
+    </>
   )
 }

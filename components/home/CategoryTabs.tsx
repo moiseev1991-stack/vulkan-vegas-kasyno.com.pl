@@ -1,6 +1,6 @@
 'use client'
 
-const tabs = [
+const TABS = [
   { id: 'lobby', label: 'LOBBY' },
   { id: 'live', label: 'KASYNO NA ŻYWO' },
   { id: 'slots', label: 'AUTOMATY' },
@@ -8,44 +8,30 @@ const tabs = [
   { id: 'popular', label: 'POPULARNE' },
   { id: 'easter', label: 'GRY WIELKANOCNE' },
   { id: 'new', label: 'NOWE GRY' },
-  { id: 'more', label: 'WIĘCEJ' },
+  { id: 'more', label: 'WIĘCEJ ▼' },
 ]
 
-interface CategoryTabsProps {
-  activeCategory: string
-  onCategoryChange: (cat: string) => void
+interface Props {
+  activeTab: string
+  onTabChange: (tab: string) => void
 }
 
-export default function CategoryTabs({ activeCategory, onCategoryChange }: CategoryTabsProps) {
+export default function CategoryTabs({ activeTab, onTabChange }: Props) {
   return (
-    <div className="py-3" style={{ background: 'transparent' }}>
-      {/* Tabs */}
-      <div className="flex gap-1 overflow-x-auto scrollbar-hide pb-1">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => onCategoryChange(tab.id)}
-            className="shrink-0 px-4 py-2 rounded-md text-xs font-bold tracking-wider transition-colors whitespace-nowrap"
-            style={
-              activeCategory === tab.id
-                ? { background: '#CC0000', color: '#fff' }
-                : { color: '#888', background: 'transparent' }
-            }
-            onMouseEnter={(e) => {
-              if (activeCategory !== tab.id) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#fff'
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (activeCategory !== tab.id) {
-                (e.currentTarget as HTMLButtonElement).style.color = '#888'
-              }
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+    <div className="flex gap-0 overflow-x-auto scrollbar-hide mb-6 border-b border-white/10">
+      {TABS.map((tab) => (
+        <button
+          key={tab.id}
+          onClick={() => onTabChange(tab.id)}
+          className={`flex-shrink-0 px-4 py-3 text-xs font-semibold tracking-wide transition-colors border-b-2 -mb-px whitespace-nowrap ${
+            activeTab === tab.id
+              ? 'border-brand text-white bg-brand/10'
+              : 'border-transparent text-gray-400 hover:text-white hover:border-white/30'
+          }`}
+        >
+          {tab.label}
+        </button>
+      ))}
     </div>
   )
 }

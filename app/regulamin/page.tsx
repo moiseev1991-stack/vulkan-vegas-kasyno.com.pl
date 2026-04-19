@@ -1,155 +1,119 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import BreadcrumbList from '@/components/BreadcrumbList'
+import LastUpdated from '@/components/LastUpdated'
+import JsonLd from '@/components/JsonLd'
+import { webPageSchema } from '@/lib/schema'
+import { PUBLISHED_DATE, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Regulamin Serwisu — Zasady Korzystania 18+',
-  description: 'Regulamin serwisu afiliacyjnego VulkanSpiele. Zasady korzystania, ograniczenia wiekowe 18+, charakter afiliacyjny portalu, wyłączenie odpowiedzialności i prawa autorskie.',
+  title: 'Regulamin Serwisu Vulkan Vegas Polska: Zasady Portalu 2026',
+  description: 'Regulamin serwisu Vulkan Vegas Polska 2026. Zasady korzystania z portalu, prawa oraz obowiązki użytkownika, ograniczenia wiekowe oraz odpowiedzialność redakcji za treści.',
+  alternates: { canonical: '/regulamin' },
   openGraph: {
-    title: 'Regulamin Serwisu — Zasady Korzystania 18+',
-    description: 'Zasady korzystania z serwisu afiliacyjnego VulkanSpiele. Ograniczenia wiekowe 18+, prawa autorskie, wyłączenie odpowiedzialności.',
-    url: 'https://vulkanspiele-casino-pl.pl/regulamin/',
+    title: 'Regulamin Serwisu Vulkan Vegas Polska: Zasady Portalu 2026',
+    description: 'Regulamin serwisu Vulkan Vegas Polska 2026. Zasady korzystania z portalu, prawa oraz obowiązki użytkownika, ograniczenia wiekowe oraz odpowiedzialność redakcji za treści.',
+    url: 'https://vulkan-vegas-kasyno.com.pl/regulamin',
+    type: 'article',
+    locale: 'pl_PL',
   },
 }
 
-export default function Regulamin() {
+export default function RegulaminPage() {
   return (
-    <main className="container mx-auto px-4 py-12 max-w-3xl">
-      <h1 className="text-3xl font-black text-white mb-2">Regulamin</h1>
-      <p className="text-white/40 text-sm mb-10">Ostatnia aktualizacja: 1 kwietnia 2026</p>
+    <>
+      <JsonLd data={webPageSchema('Regulamin Serwisu Vulkan Vegas Polska: Zasady Portalu 2026', '/regulamin')} />
 
-      <div className="space-y-10 text-white/70 text-sm leading-relaxed">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <BreadcrumbList items={[
+          { name: 'Home', url: '/' },
+          { name: 'Regulamin', url: '/regulamin' },
+        ]} />
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">1. Informacje ogólne</h2>
-          <p>
-            Serwis VulkanSpiele dostępny pod adresem vulkanspiele-casino-pl.pl (dalej: &bdquo;Serwis&rdquo;) jest
-            niezależnym portalem informacyjno-afiliacyjnym poświęconym tematyce kasyn internetowych.
-            Serwis nie jest kasynem, nie posiada licencji hazardowej i nie prowadzi żadnej działalności
-            polegającej na organizowaniu gier losowych ani zakładów wzajemnych.
-          </p>
-          <p className="mt-2">
-            Przeglądanie treści Serwisu jest równoznaczne z akceptacją wszystkich poniższych postanowień.
-            Prosimy o uważne zapoznanie się z Regulaminem przed dalszym korzystaniem z Serwisu.
-          </p>
-        </section>
+        <LastUpdated date={PUBLISHED_DATE} reviewedBy="Marek Kowalski" />
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">2. Ograniczenie wiekowe — tylko 18+</h2>
-          <div
-            className="rounded-xl p-4 mb-4"
-            style={{ background: 'rgba(204,0,0,0.1)', border: '1px solid rgba(204,0,0,0.3)' }}
-          >
-            <p className="text-white font-semibold">
-              Dostęp do Serwisu mają wyłącznie osoby, które ukończyły 18 rok życia.
-              Osoby niepełnoletnie są zobowiązane do niezwłocznego opuszczenia strony.
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+          Regulamin Serwisu Vulkan Vegas Polska: Warunki Użytkowania dla Graczy
+        </h1>
+
+        <p className="text-gray-400 text-sm mb-8">Wersja: 1.0 | Data wejścia w życie: 18 kwietnia 2026 r.</p>
+
+        <div className="space-y-8 text-sm text-gray-300 leading-relaxed">
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§1 Definicje</h2>
+            <ul className="space-y-2">
+              <li><strong className="text-gray-200">Serwis</strong> — portal internetowy vulkan-vegas-kasyno.com.pl</li>
+              <li><strong className="text-gray-200">Redakcja</strong> — zespół autorów i administratorów serwisu</li>
+              <li><strong className="text-gray-200">Użytkownik</strong> — osoba korzystająca z serwisu</li>
+              <li><strong className="text-gray-200">Treści</strong> — artykuły, recenzje, opinie, materiały graficzne zamieszczone w serwisie</li>
+              <li><strong className="text-gray-200">Link afiliacyjny</strong> — link do zewnętrznego serwisu, za pośrednictwem którego serwis może otrzymać wynagrodzenie</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§2 Przedmiot regulaminu</h2>
+            <p>Niniejszy regulamin określa zasady korzystania z serwisu vulkan-vegas-kasyno.com.pl, będącego niezależnym portalem informacyjno-afiliacyjnym dotyczącym kasyna online Vulkan Vegas.</p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§3 Warunki korzystania</h2>
+            <ol className="list-decimal list-inside space-y-2 ml-2">
+              <li>Korzystanie z serwisu jest bezpłatne i dobrowolne.</li>
+              <li>Użytkownik zobowiązany jest do korzystania z serwisu zgodnie z przepisami prawa.</li>
+              <li>Zabrania się kopiowania treści serwisu bez zgody redakcji.</li>
+              <li>Serwis zastrzega prawo do zmiany treści bez wcześniejszego powiadomienia.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§4 Ograniczenia wiekowe (18+)</h2>
+            <p className="mb-2">
+              Treści zamieszczone w serwisie dotyczą gier hazardowych. Przeznaczone są wyłącznie dla osób
+              pełnoletnich, które ukończyły 18 rok życia. Serwis nie jest skierowany do osób niepełnoletnich
+              i nie zachęca takich osób do korzystania z usług kasyn online.
             </p>
-          </div>
-          <p>
-            Treści prezentowane w Serwisie dotyczą hazardu online, który w Polsce jest regulowany
-            prawnie i dozwolony wyłącznie dla osób pełnoletnich. Operator Serwisu podejmuje kroki
-            w celu ograniczenia dostępu niepełnoletnim, jednak nie ponosi odpowiedzialności za
-            samodzielne wejście osoby niepełnoletniej na strony kasyn zewnętrznych.
-          </p>
-        </section>
+            <p>
+              Hazard może być uzależniający. Korzystaj odpowiedzialnie. Informacje i pomoc:
+              <a href="/odpowiedzialna-gra" className="text-brand hover:underline ml-1">Odpowiedzialna gra</a>.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">3. Charakter i cel serwisu</h2>
-          <p>
-            Serwis pełni funkcję afiliacyjną i informacyjną. Oznacza to w szczególności, że:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Publikowane recenzje i rankingi kasyn mają charakter redakcyjny i informacyjny;</li>
-            <li>Serwis może pobierać wynagrodzenie prowizyjne od operatorów kasyn, do których odsyła użytkowników;</li>
-            <li>Żadna treść Serwisu nie stanowi oferty zawarcia umowy, porady prawnej ani finansowej;</li>
-            <li>Opisywane promocje i bonusy mogą ulec zmianie bez uprzedzenia ze strony kasyn zewnętrznych;</li>
-            <li>Serwis nie gwarantuje wygranych ani pozytywnych wyników finansowych z gry w kasynie.</li>
-          </ul>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§5 Odpowiedzialność serwisu</h2>
+            <ol className="list-decimal list-inside space-y-2 ml-2">
+              <li>Serwis nie jest operatorem kasyna i nie ponosi odpowiedzialności za działania kasyna Vulkan Vegas.</li>
+              <li>Treści mają charakter informacyjny i nie stanowią porady prawnej ani finansowej.</li>
+              <li>Serwis dokłada starań o aktualność informacji, ale nie gwarantuje ich kompletności.</li>
+              <li>Serwis nie odpowiada za straty poniesione w wyniku gry hazardowej.</li>
+            </ol>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">4. Ograniczenie odpowiedzialności</h2>
-          <p>
-            Operator Serwisu nie odpowiada za:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Warunki świadczenia usług, regulaminy bonusów ani praktyki kasyn podmiotów trzecich;</li>
-            <li>Szkody finansowe wynikłe z uczestnictwa użytkownika w grach hazardowych;</li>
-            <li>Przerwy w dostępności, błędy techniczne lub zmiany na stronach kasyn partnerskich;</li>
-            <li>Decyzje podejmowane przez użytkowników w oparciu o treści opublikowane w Serwisie;</li>
-            <li>Treści stron trzecich, do których prowadzą linki zamieszczone w Serwisie.</li>
-          </ul>
-          <p className="mt-2">
-            Wszelkie informacje o bonusach, promocjach i warunkach gry należy weryfikować bezpośrednio
-            u danego operatora kasyna przed podjęciem decyzji o rejestracji lub wpłacie.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§6 Reklamacje</h2>
+            <p>
+              Reklamacje dotyczące działania serwisu należy kierować na adres:{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand hover:underline">{CONTACT_EMAIL}</a>.
+              Odpowiadamy w ciągu 14 dni roboczych.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">5. Prawa autorskie</h2>
-          <p>
-            Wszystkie materiały opublikowane w Serwisie — teksty, grafiki, układy stron, logotypy
-            oraz kod źródłowy — są chronione przepisami prawa autorskiego. Ich powielanie, dystrybucja
-            lub komercyjne wykorzystanie bez wyraźnej, pisemnej zgody Operatora jest zabronione
-            i może stanowić podstawę dochodzenia roszczeń cywilnych lub karnych.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§7 Zmiany regulaminu</h2>
+            <p>
+              Redakcja zastrzega prawo do zmiany niniejszego regulaminu. O zmianach użytkownicy informowani
+              będą przez zamieszczenie zaktualizowanej wersji regulaminu w serwisie wraz z datą wejścia w życie.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">6. Dane osobowe i cookies</h2>
-          <p>
-            Zasady gromadzenia i przetwarzania danych osobowych zostały opisane w{' '}
-            <Link href="/polityka-prywatnosci" className="text-gold hover:underline">Polityce Prywatności</Link>.
-            Informacje o plikach cookies — w{' '}
-            <Link href="/polityka-cookie" className="text-gold hover:underline">Polityce Cookie</Link>.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">7. Odpowiedzialna gra</h2>
-          <p>
-            VulkanSpiele aktywnie wspiera idee odpowiedzialnego hazardu. Jeżeli gra przestaje być
-            dla Ciebie rozrywką i staje się problemem, zapoznaj się z materiałami dostępnymi na stronie{' '}
-            <Link href="/odpowiedzialna-gra" className="text-gold hover:underline">Odpowiedzialna Gra</Link>{' '}
-            lub zadzwoń na bezpłatny telefon zaufania: <strong className="text-white">116 123</strong>.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">8. Linki zewnętrzne</h2>
-          <p>
-            Serwis zawiera odnośniki do zewnętrznych stron internetowych (kasyn, dostawców oprogramowania,
-            organów regulacyjnych). Operator nie ma wpływu na treść ani dostępność tych stron i nie ponosi
-            odpowiedzialności za ich zawartość lub politykę prywatności.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">9. Prawo właściwe i jurysdykcja</h2>
-          <p>
-            Regulamin podlega prawu polskiemu. Wszelkie spory wynikające z korzystania z Serwisu
-            będą rozstrzygane przez sąd właściwy dla siedziby Operatora, chyba że przepisy prawa
-            konsumenckiego stanowią inaczej.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">10. Zmiany Regulaminu</h2>
-          <p>
-            Operator zastrzega prawo do modyfikacji niniejszego Regulaminu w dowolnym czasie.
-            Zaktualizowana wersja z nową datą wejścia w życie będzie publikowana na tej stronie.
-            Kontynuowanie korzystania z Serwisu po opublikowaniu zmian oznacza ich akceptację.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">11. Kontakt</h2>
-          <p>
-            Pytania związane z Regulaminem prosimy kierować na adres:{' '}
-            <a href="mailto:support@vulkanspiele-casino-pl.pl" className="text-gold hover:underline">support@vulkanspiele-casino-pl.pl</a>
-          </p>
-        </section>
-
+          <section>
+            <h2 className="text-xl font-bold text-white mb-3">§8 Postanowienia końcowe</h2>
+            <ol className="list-decimal list-inside space-y-2 ml-2">
+              <li>W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy prawa polskiego.</li>
+              <li>Regulamin wchodzi w życie z dniem 18 kwietnia 2026 roku.</li>
+              <li>Ewentualne spory rozstrzygane będą przez właściwy sąd polski.</li>
+            </ol>
+          </section>
+        </div>
       </div>
-    </main>
+    </>
   )
 }

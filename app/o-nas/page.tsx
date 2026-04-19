@@ -1,149 +1,101 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BreadcrumbList from '@/components/BreadcrumbList'
+import LastUpdated from '@/components/LastUpdated'
+import JsonLd from '@/components/JsonLd'
+import { webPageSchema } from '@/lib/schema'
+import { PUBLISHED_DATE, CONTACT_EMAIL, SITE_NAME } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'O Nas — Niezależny Portal Afiliacyjny Kasyn Online',
-  description: 'VulkanSpiele to niezależny portal afiliacyjny kasyn online dla polskich graczy. Rzetelne recenzje, rankingi i informacje o bonusach. Działamy od 2024 roku.',
+  title: 'O Nas Vulkan Vegas Polska 2026: Zespół Recenzentów Kasyn',
+  description: 'Poznaj zespół redakcyjny serwisu Vulkan Vegas Polska 2026. Jesteśmy niezależnymi ekspertami od hazardu online oraz afiliacji kasyn, piszącymi recenzje dla polskich graczy.',
+  alternates: { canonical: '/o-nas' },
   openGraph: {
-    title: 'O Nas — Niezależny Portal Afiliacyjny Kasyn Online',
-    description: 'Niezależny portal afiliacyjny dla polskich graczy. Rzetelne recenzje kasyn, aktualne bonusy i odpowiedzialna gra.',
-    url: 'https://vulkanspiele-casino-pl.pl/o-nas/',
+    title: 'O Nas Vulkan Vegas Polska 2026: Zespół Recenzentów Kasyn',
+    description: 'Poznaj zespół redakcyjny serwisu Vulkan Vegas Polska 2026. Jesteśmy niezależnymi ekspertami od hazardu online oraz afiliacji kasyn, piszącymi recenzje dla polskich graczy.',
+    url: 'https://vulkan-vegas-kasyno.com.pl/o-nas',
+    type: 'article',
+    locale: 'pl_PL',
   },
 }
 
-export default function ONas() {
+export default function ONasPage() {
   return (
-    <main className="container mx-auto px-4 py-12 max-w-3xl">
-      <h1 className="text-3xl font-black text-white mb-2">O Nas</h1>
-      <p className="text-white/60 text-sm mb-10">
-        VulkanSpiele to niezależny przewodnik po świecie kasyn online stworzony z myślą o polskich graczach,
-        którzy cenią rzetelne informacje i chcą grać świadomie.
-      </p>
+    <>
+      <JsonLd data={webPageSchema('O Nas Vulkan Vegas Polska 2026: Zespół Recenzentów Kasyn', '/o-nas')} />
 
-      <div className="space-y-10 text-white/70 text-sm leading-relaxed">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <BreadcrumbList items={[
+          { name: 'Home', url: '/' },
+          { name: 'O nas', url: '/o-nas' },
+        ]} />
 
-        <div
-          className="rounded-xl p-5"
-          style={{ background: 'rgba(255, 215, 0, 0.05)', border: '1px solid rgba(255, 215, 0, 0.2)' }}
-        >
-          <p className="text-gold font-bold mb-2">ℹ Serwis afiliacyjny — ważna informacja</p>
-          <p className="text-white/70 text-sm">
-            VulkanSpiele jest <strong className="text-white">niezależnym portalem afiliacyjnym</strong> — nie jest kasynem
-            internetowym i nie prowadzi żadnej działalności hazardowej. Nie przyjmujemy wpłat, nie prowadzimy kont
-            graczy ani nie organizujemy gier losowych. Serwis może otrzymywać wynagrodzenie od operatorów kasyn
-            za kierowanie do nich użytkowników. Nie ma to wpływu na obiektywność naszych ocen i recenzji.
-          </p>
-        </div>
+        <LastUpdated date={PUBLISHED_DATE} reviewedBy="Marek Kowalski" />
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Nasza misja</h2>
-          <p>
-            Wierzymy, że każdy gracz zasługuje na dostęp do rzetelnych, aktualnych i łatwych w odbiorze
-            informacji o kasynach online. Na polskim rynku istnieje wiele operatorów — różniących się ofertą,
-            licencjami, metodami płatności i jakością obsługi klienta. Naszą misją jest pomoc w nawigacji
-            po tym świecie i wskazanie opcji naprawdę wartych uwagi.
-          </p>
-          <p className="mt-2">
-            Portal VulkanSpiele działa od 2024 roku. Nasz zespół na bieżąco monitoruje rynek kasyn online,
-            testuje nowe platformy i aktualizuje treści, by zawsze odzwierciedlały aktualną rzeczywistość.
-          </p>
-        </section>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+          O Nas Vulkan Vegas Polska: Kim Jesteśmy oraz Jak Recenzujemy Kasyna
+        </h1>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Co znajdziesz w naszym serwisie?</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              {
-                title: 'Recenzje kasyn',
-                desc: 'Kompleksowe oceny platform — od licencji i dostawców gier, przez metody płatności, aż po jakość obsługi klienta i szybkość wypłat.',
-              },
-              {
-                title: 'Aktualne bonusy',
-                desc: 'Przejrzyste zestawienia ofert powitalnych, darmowych spinów, cashbacków i innych promocji z dokładnym omówieniem warunków obrotu.',
-              },
-              {
-                title: 'Turnieje i akcje specjalne',
-                desc: 'Informacje o aktywnych turniejach slotowych, loteriach i sezonowych kampaniach dostępnych dla polskich graczy.',
-              },
-              {
-                title: 'Poradniki i strategie',
-                desc: 'Artykuły edukacyjne o zasadach najpopularniejszych gier, RTP automatów, wartości bonusów i odpowiedzialnej grze.',
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-xl p-4" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-                <p className="text-white font-semibold mb-1">{item.title}</p>
-                <p className="text-white/50 text-xs">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <h2 className="text-2xl font-bold text-white mb-4">Misja serwisu</h2>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          {SITE_NAME} to niezależny portal informacyjny i afiliacyjny poświęcony kasynie Vulkan Vegas.
+          Naszą misją jest dostarczanie polskim graczom rzetelnych, aktualnych i transparentnych informacji
+          o ofercie, bonusach, metodach płatności i legalności kasyna Vulkan Vegas. Nie jesteśmy operatorem
+          kasyna — oceniamy go z perspektywy gracza.
+        </p>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Jak oceniamy kasyna?</h2>
-          <p className="mb-3">
-            Nasze recenzje są oparte na własnych testach i niezależnej analizie. Każde kasyno oceniamy
-            według tych samych kryteriów:
-          </p>
-          <ul className="space-y-2">
-            {[
-              'Ważna licencja od uznanego regulatora — Malta Gaming Authority (MGA), Curaçao eGaming lub UKGC;',
-              'Certyfikowany generator liczb losowych (RNG) potwierdzający losowość wyników gier;',
-              'Szeroka gama gier od renomowanych dostawców oprogramowania;',
-              'Przejrzyste warunki bonusów z rozsądnymi wymogami obrotu (wagering);',
-              'Szybkie i bezproblemowe wypłaty z weryfikacją w rozsądnym czasie;',
-              'Narzędzia odpowiedzialnej gry: limity, przerwy, samowykluczenie;',
-              'Responsywna obsługa klienta dostępna w języku polskim lub angielskim.',
-            ].map((criterion) => (
-              <li key={criterion} className="flex items-start gap-2">
-                <span className="text-gold mt-0.5 shrink-0">✓</span>
-                <span>{criterion}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3">
-            Kasyna niespełniające powyższych kryteriów nie pojawiają się w naszych rekomendacjach —
-            bez względu na warunki finansowe ewentualnej umowy afiliacyjnej.
-          </p>
-        </section>
+        <h2 className="text-2xl font-bold text-white mb-4">Kim jesteśmy</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Jesteśmy zespołem niezależnych ekspertów od branży hazardowej z łącznie ponad 15-letnim
+          doświadczeniem w recenzowaniu kasyn online, analizie warunków bonusów i testowaniu platform
+          dla graczy z Polski i Europy Środkowo-Wschodniej.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Nasz zespół tworzą doświadczeni recenzenci, copywriterzy specjalizujący się w branży gambling
+          oraz analitycy SEO. Każdy artykuł przechodzi review przed publikacją.
+          Więcej o naszych autorach: <Link href="/zespol" className="text-brand hover:underline">Zespół redakcyjny</Link>.
+        </p>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Model finansowania</h2>
-          <p>
-            Serwis VulkanSpiele jest finansowany w modelu afiliacyjnym. Oznacza to, że:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Gdy klikniesz w link do kasyna partnerskiego i założysz konto, możemy otrzymać prowizję od operatora;</li>
-            <li>Wynagrodzenie przyjmuje formę udziału w przychodach (RevShare), opłaty za rejestrację (CPA) lub mieszaną;</li>
-            <li>Umowy z partnerami nie determinują wyników recenzji ani kolejności w rankingach;</li>
-            <li>Korzystanie z Serwisu jest dla użytkowników w pełni bezpłatne.</li>
-          </ul>
-        </section>
+        <h2 className="text-2xl font-bold text-white mb-4">Jak pracujemy</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Każda recenzja i artykuł na serwisie tworzony jest według naszej{' '}
+          <Link href="/metodologia-recenzji" className="text-brand hover:underline">metodologii recenzji</Link>.
+          Testujemy kasyna na własnych kontach, weryfikujemy twierdzenia operatora, sprawdzamy prędkość
+          wypłat i jakość obsługi klienta.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Fakty prawne (legalność, regulacje) weryfikujemy na podstawie oficjalnych dokumentów rządowych,
+          ustaw i komunikatów organów regulacyjnych. Nie kopiujemy treści z innych serwisów.
+        </p>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Odpowiedzialna gra</h2>
-          <p>
-            Jesteśmy przekonani, że hazard online może być bezpieczną rozrywką — o ile podchodzi się do niego
-            świadomie. Dlatego aktywnie promujemy zasady odpowiedzialnej gry i informujemy o dostępnych narzędziach
-            ochrony. Jeśli potrzebujesz pomocy lub czujesz, że gra wymknęła Ci się spod kontroli, odwiedź naszą stronę{' '}
-            <Link href="/odpowiedzialna-gra" className="text-gold hover:underline">Odpowiedzialna Gra</Link>{' '}
-            lub zadzwoń na bezpłatny telefon zaufania: <strong className="text-white">116 123</strong>.
-          </p>
-        </section>
+        <h2 className="text-2xl font-bold text-white mb-4">Niezależność redakcji</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Serwis jest finansowany przez model afiliacyjny — otrzymujemy prowizję od kasyna za graczy
+          zarejestrowanych przez nasze linki. Szczegóły w{' '}
+          <Link href="/informacja-afiliacyjna" className="text-brand hover:underline">informacji afiliacyjnej</Link>.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Wynagrodzenie afiliacyjne nie wpływa na treść recenzji. Opisujemy zarówno zalety, jak i wady
+          kasyna — z pełną transparentnością, łącznie z faktem braku polskiej licencji.
+        </p>
 
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Skontaktuj się z nami</h2>
-          <p>
-            Masz pytanie, chcesz zgłosić nieaktualną informację lub zaproponować współpracę?
-            Pisz śmiało — staramy się odpowiadać w ciągu 1–2 dni roboczych.
-          </p>
-          <p className="mt-2">
-            <a href="mailto:support@vulkanspiele-casino-pl.pl" className="text-gold hover:underline">
-              support@vulkanspiele-casino-pl.pl
-            </a>
-          </p>
-        </section>
+        <h2 className="text-2xl font-bold text-white mb-4">Historia serwisu</h2>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Serwis vulkan-vegas-kasyno.com.pl powstał w 2026 roku z potrzeby dostarczenia polskojęzycznym graczom
+          rzetelnego źródła informacji o kasynie Vulkan Vegas. Domenę wybraliśmy tak, aby była łatwa
+          do zapamiętania i jednoznacznie kojarzyła się z recenzowaną marką na rynku polskim.
+        </p>
 
+        <h2 className="text-2xl font-bold text-white mb-4">Kontakt z redakcją</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Masz pytanie, znalazłeś błąd lub chcesz zgłosić propozycję artykułu? Skontaktuj się z nami:
+        </p>
+        <ul className="space-y-2 text-sm text-gray-300 mb-8">
+          <li>Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand hover:underline">{CONTACT_EMAIL}</a></li>
+          <li>Formularz: <Link href="/kontakt" className="text-brand hover:underline">strona kontaktowa</Link></li>
+          <li>Czas odpowiedzi: do 48 godzin roboczych</li>
+        </ul>
       </div>
-    </main>
+    </>
   )
 }

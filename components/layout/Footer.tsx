@@ -1,80 +1,80 @@
 import Link from 'next/link'
-
-const GO = '/go/'
+import { AFFILIATE_LINK } from '@/lib/constants'
 
 const columns = [
   {
     title: 'Postanowienia ogólne',
     links: [
-      { label: 'Regulamin',                href: '/regulamin/' },
-      { label: 'Regulamin bonusów',        href: GO },
-      { label: 'Zasady dotyczące zakładów',href: GO },
-      { label: 'Polityka AML',             href: GO },
-      { label: 'Polityka anulowania',      href: GO },
+      { label: 'Regulamin', href: '/regulamin' },
+      { label: 'Regulamin bonusów', href: AFFILIATE_LINK },
+      { label: 'Zasady dotyczące zakładów', href: AFFILIATE_LINK },
+      { label: 'Polityka AML', href: AFFILIATE_LINK },
+      { label: 'Polityka anulowania', href: AFFILIATE_LINK },
     ],
   },
   {
     title: 'Kasyno',
     links: [
-      { label: 'Sloty',         href: GO },
-      { label: 'Gry insta',     href: GO },
-      { label: 'Ruletki',       href: GO },
-      { label: 'Gry karciane',  href: GO },
-      { label: 'Kasyno live',   href: GO },
-      { label: 'Jackpoty',      href: GO },
+      { label: 'Sloty', href: AFFILIATE_LINK },
+      { label: 'Gry insta', href: AFFILIATE_LINK },
+      { label: 'Ruletki', href: AFFILIATE_LINK },
+      { label: 'Gry karciane', href: AFFILIATE_LINK },
+      { label: 'Kasyno live', href: AFFILIATE_LINK },
+      { label: 'Jackpoty', href: AFFILIATE_LINK },
     ],
   },
   {
     title: 'Dostawcy',
     links: [
-      { label: 'Pragmatic Play',      href: GO },
-      { label: 'Evolution Gaming',    href: GO },
-      { label: 'Play\'n GO',          href: GO },
-      { label: 'Evoplay Entertainment', href: GO },
-      { label: 'Novomatic',           href: GO },
-      { label: 'NetEnt',              href: GO },
+      { label: 'Pragmatic Play', href: AFFILIATE_LINK },
+      { label: 'Evolution Gaming', href: AFFILIATE_LINK },
+      { label: "Play'n GO", href: AFFILIATE_LINK },
+      { label: 'Evoplay Entertainment', href: AFFILIATE_LINK },
+      { label: 'Novomatic', href: AFFILIATE_LINK },
+      { label: 'NetEnt', href: AFFILIATE_LINK },
     ],
   },
   {
     title: 'Dokumentacja',
     links: [
-      { label: 'Polityka prywatności',           href: '/polityka-prywatnosci/' },
-      { label: 'Polityka cookie',                href: '/polityka-cookie/' },
-      { label: 'Polityka anulowania',            href: GO },
-      { label: 'Polityka dotycząca skarg klientów', href: GO },
-      { label: 'Polityka AML',                   href: GO },
+      { label: 'Polityka prywatności', href: '/polityka-prywatnosci' },
+      { label: 'Polityka cookie', href: AFFILIATE_LINK },
+      { label: 'Polityka anulowania', href: AFFILIATE_LINK },
+      { label: 'Polityka dotycząca skarg klientów', href: AFFILIATE_LINK },
+      { label: 'Polityka AML', href: AFFILIATE_LINK },
     ],
   },
   {
     title: 'Informacje',
     links: [
-      { label: 'O nas',              href: '/o-nas/' },
-      { label: 'Odpowiedzialna gra', href: '/odpowiedzialna-gra/' },
-      { label: 'Polityka dotycząca skarg klientów', href: GO },
-      { label: 'Program partnerski', href: GO },
+      { label: 'O nas', href: '/o-nas' },
+      { label: 'Odpowiedzialna gra', href: '/odpowiedzialna-gra' },
+      { label: 'Polityka dotycząca skarg klientów', href: AFFILIATE_LINK },
+      { label: 'Program partnerski', href: AFFILIATE_LINK },
     ],
   },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-[#090102] border-t border-white/5 mt-16">
-      <div className="container mx-auto px-4 py-10">
-
-        {/* Multi-column nav */}
+    <footer className="bg-surface border-t border-white/10 mt-16">
+      <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
           {columns.map((col) => (
             <div key={col.title}>
-              <p className="text-white text-sm font-semibold mb-3">{col.title}</p>
-              <ul className="space-y-1.5">
+              <h3 className="text-white font-semibold text-sm mb-4">{col.title}</h3>
+              <ul className="space-y-2">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-white/40 hover:text-white/70 text-xs transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith('/') ? (
+                      <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors">
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -82,21 +82,13 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/5 pt-6">
-          {/* Disclaimer */}
-          <p className="text-white/25 text-xs max-w-3xl mb-6 leading-relaxed">
-            VulkanSpiele jest niezależnym serwisem afiliacyjnym — nie jest kasynem i nie prowadzi działalności
-            hazardowej. Treści na stronie mają charakter wyłącznie informacyjny. Hazard jest przeznaczony wyłącznie
-            dla osób pełnoletnich (18+). Graj odpowiedzialnie.
+        <div className="border-t border-white/10 pt-8">
+          <p className="text-gray-500 text-xs leading-relaxed max-w-4xl">
+            VulkanSpiele jest niezależnym serwisem afiliacyjnym — nie jest kasynem i nie prowadzi działalności hazardowej.
+            Treści na stronie mają charakter informacyjny i reklamowy. Hazard wiąże się z ryzykiem uzależnienia.
+            Gra dozwolona wyłącznie dla osób pełnoletnich (18+). Graj odpowiedzialnie.
           </p>
-
-          {/* Copyright */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-            <p className="text-white/30 text-xs">© 2026 VulkanSpiele. Wszelkie prawa zastrzeżone.</p>
-            <p className="text-white/20 text-xs">18+ | Graj odpowiedzialnie</p>
-          </div>
         </div>
-
       </div>
     </footer>
   )

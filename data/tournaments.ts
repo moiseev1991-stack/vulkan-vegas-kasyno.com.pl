@@ -22,7 +22,7 @@ export const tournaments: Tournament[] = [
     endsAt: '2026-04-30T23:59:00Z',
     startsAt: '2026-04-07T00:00:00Z',
     gameIds: ['big-bass-splash', 'wild-love', 'sugar-rush', 'seven-seven', 'candy-craze', 'vulkanspiele-joker', 'fortune-bags', 'book-of-fallen'],
-    image: '/images/tournament/girl-coins.png',
+    image: '/images/tournament/telka.png',
   },
   {
     id: 'easter-tournament',

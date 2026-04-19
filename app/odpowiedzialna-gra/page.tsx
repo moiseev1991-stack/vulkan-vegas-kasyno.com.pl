@@ -1,174 +1,149 @@
 import type { Metadata } from 'next'
+import BreadcrumbList from '@/components/BreadcrumbList'
+import LastUpdated from '@/components/LastUpdated'
+import JsonLd from '@/components/JsonLd'
+import { webPageSchema } from '@/lib/schema'
+import { PUBLISHED_DATE, RESPONSIBLE_GAMING_PHONE } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Odpowiedzialna Gra — Pomoc i Wsparcie dla Graczy 18+',
-  description: 'Zasady odpowiedzialnej gry, narzędzia samoochrony i pomoc dla uzależnionych. Kontakty: Anonimowi Hazardziści, KCPU, telefon zaufania 116 123. Hazard 18+.',
+  title: 'Odpowiedzialna Gra w Vulkan Vegas 2026: Pomoc dla Polaków',
+  description: 'Odpowiedzialna gra w Vulkan Vegas dla polskich graczy 2026. Narzędzia samowykluczenia, limity wpłat oraz kontakt do organizacji pomocowych takich jak UOKiK i telefon zaufania.',
+  alternates: { canonical: '/odpowiedzialna-gra' },
   openGraph: {
-    title: 'Odpowiedzialna Gra — Pomoc i Wsparcie dla Graczy 18+',
-    description: 'Narzędzia samoochrony, limity depozytów, samowykluczenie. Pomoc: Anonimowi Hazardziści, KCPU, telefon 116 123.',
-    url: 'https://vulkanspiele-casino-pl.pl/odpowiedzialna-gra/',
+    title: 'Odpowiedzialna Gra w Vulkan Vegas 2026: Pomoc dla Polaków',
+    description: 'Odpowiedzialna gra w Vulkan Vegas dla polskich graczy 2026. Narzędzia samowykluczenia, limity wpłat oraz kontakt do organizacji pomocowych takich jak UOKiK i telefon zaufania.',
+    url: 'https://vulkan-vegas-kasyno.com.pl/odpowiedzialna-gra',
+    type: 'article',
+    locale: 'pl_PL',
   },
-  robots: { index: true, follow: true },
 }
 
-export default function OdpowiedzialnaGra() {
+export default function OdpowiedzialdnaGraPage() {
   return (
-    <main className="container mx-auto px-4 py-12 max-w-3xl">
-      <h1 className="text-3xl font-black text-white mb-2">Odpowiedzialna Gra</h1>
-      <p className="text-white/60 text-sm mb-10">
-        Hazard powinien być wyłącznie formą rozrywki. VulkanSpiele zachęca wszystkich graczy
-        do świadomego i kontrolowanego podejścia do gry.
-      </p>
+    <>
+      <JsonLd data={webPageSchema('Odpowiedzialna Gra w Vulkan Vegas 2026: Pomoc dla Polaków', '/odpowiedzialna-gra')} />
 
-      <div
-        className="rounded-xl p-5 mb-10"
-        style={{ background: 'rgba(204,0,0,0.1)', border: '1px solid rgba(204,0,0,0.3)' }}
-      >
-        <p className="text-white font-bold text-base mb-1">⚠ Ostrzeżenie</p>
-        <p className="text-white/70 text-sm">
-          Hazard wiąże się z ryzykiem uzależnienia i poważnymi konsekwencjami finansowymi.
-          Graj wyłącznie za środki, których utrata nie wpłynie negatywnie na Twoje życie.
-          Jeśli masz problem z hazardem — zadzwoń na bezpłatny telefon zaufania: <strong className="text-white">116 123</strong>.
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <BreadcrumbList items={[
+          { name: 'Home', url: '/' },
+          { name: 'Odpowiedzialna gra', url: '/odpowiedzialna-gra' },
+        ]} />
+
+        <LastUpdated date={PUBLISHED_DATE} reviewedBy="Marek Kowalski" />
+
+        <div className="bg-red-950/40 border border-red-700/40 rounded-xl p-5 mb-8">
+          <p className="text-red-300 font-bold text-lg mb-1">Ważne ostrzeżenie</p>
+          <p className="text-red-200/80 text-sm leading-relaxed">
+            Hazard wiąże się z ryzykiem uzależnienia i strat finansowych. Gra dozwolona wyłącznie dla osób
+            pełnoletnich (18+). Jeśli masz problem z kontrolowaniem gry, zadzwoń na telefon zaufania:{' '}
+            <strong>{RESPONSIBLE_GAMING_PHONE}</strong>
+          </p>
+        </div>
+
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+          Odpowiedzialna Gra w Vulkan Vegas: Bezpieczny Hazard w Polsce 2026
+        </h1>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Czym jest odpowiedzialna gra</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Odpowiedzialna gra to podejście do hazardu, które traktuje go wyłącznie jako formę rozrywki,
+          a nie sposób na zarobek. Oznacza grę w ramach zaplanowanego budżetu, z ustalonymi limitami
+          czasu i kwot, bez pożyczania pieniędzy na grę.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Kasyno Vulkan Vegas oferuje szereg narzędzi, które pomagają graczom kontrolować swoje nawyki
+          hazardowe. Korzystaj z nich proaktywnie — nie czekaj na pojawienie się problemu.
+        </p>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Jak rozpoznać problem</h2>
+        <div className="bg-surface-card border border-white/10 rounded-xl p-5 mb-8">
+          <p className="text-white font-semibold mb-3">Sygnały alarmowe — kiedy gra staje się problemem:</p>
+          <ul className="space-y-2 text-sm text-gray-300">
+            {[
+              'Grasz więcej niż planowałeś i trudno Ci przestać',
+              'Myślisz o hazardzie przez cały dzień',
+              'Pożyczasz pieniądze lub sprzedajesz rzeczy, żeby grać',
+              'Ukrywasz fakt grania przed rodziną lub znajomymi',
+              'Próbujesz odegrać się po przegranej',
+              'Zaniedbane obowiązki zawodowe lub rodzinne z powodu gry',
+              'Czujesz niepokój lub rozdrażnienie, gdy nie grasz',
+            ].map((item, i) => (
+              <li key={i} className="flex gap-2">
+                <span className="text-red-400 flex-shrink-0">⚠</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Narzędzia Vulkan Vegas</h2>
+        <div className="space-y-4 mb-8">
+          <div className="bg-surface-card border border-white/10 rounded-xl p-4">
+            <h3 className="text-white font-semibold mb-2">Limity depozytów</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Ustaw dzienny, tygodniowy lub miesięczny limit wpłat w panelu gracza. Po ustawieniu limitu
+              nie możesz go zwiększyć przez 24h — daje to czas do namysłu.
+            </p>
+          </div>
+          <div className="bg-surface-card border border-white/10 rounded-xl p-4">
+            <h3 className="text-white font-semibold mb-2">Samowykluczenie (Self-exclusion)</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Możesz zablokować dostęp do swojego konta na określony czas (tydzień, miesiąc, rok) lub
+              bezterminowo. W trakcie samowykluczenia kasyno nie może reaktywować konta na Twój wniosek.
+            </p>
+          </div>
+          <div className="bg-surface-card border border-white/10 rounded-xl p-4">
+            <h3 className="text-white font-semibold mb-2">Cooling-off period</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Krótka przerwa od 24h do kilku tygodni. W tym czasie konto jest aktywne, ale nie możesz
+              dokonywać depozytów ani grać. Idealne gdy czujesz, że potrzebujesz oddechu.
+            </p>
+          </div>
+          <div className="bg-surface-card border border-white/10 rounded-xl p-4">
+            <h3 className="text-white font-semibold mb-2">Limity czasu gry</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Ustaw limit sesji — po określonym czasie gry otrzymasz powiadomienie lub zostaniesz automatycznie
+              wylogowany.
+            </p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Telefon zaufania</h2>
+        <div className="bg-green-950/30 border border-green-800/40 rounded-xl p-5 mb-8">
+          <p className="text-green-300 font-bold text-xl mb-1">{RESPONSIBLE_GAMING_PHONE}</p>
+          <p className="text-green-200/80 text-sm">
+            Bezpłatna linia wsparcia dla osób uzależnionych od hazardu i ich rodzin. Czynna całą dobę, 7 dni w tygodniu.
+            Rozmowy są anonimowe i bezpłatne.
+          </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Organizacje pomocowe w Polsce</h2>
+        <div className="space-y-3 mb-8">
+          <div className="bg-surface-card border border-white/10 rounded-lg p-4">
+            <a href="https://www.uokik.gov.pl/" rel="noopener noreferrer" target="_blank" className="text-brand font-semibold hover:underline">
+              UOKiK — Urząd Ochrony Konkurencji i Konsumentów
+            </a>
+            <p className="text-gray-400 text-sm mt-1">Informacje o ochronie konsumentów, skargi na nieuczciwych operatorów.</p>
+          </div>
+          <div className="bg-surface-card border border-white/10 rounded-lg p-4">
+            <a href="https://www.gry-hazardowe.mf.gov.pl/" rel="noopener noreferrer" target="_blank" className="text-brand font-semibold hover:underline">
+              Ministerstwo Finansów — Gry Hazardowe
+            </a>
+            <p className="text-gray-400 text-sm mt-1">Oficjalna strona o regulacjach hazardowych w Polsce, rejestr kasyn legalnych.</p>
+          </div>
+          <div className="bg-surface-card border border-white/10 rounded-lg p-4">
+            <p className="text-white font-semibold">Anonimowi Hazardziści</p>
+            <p className="text-gray-400 text-sm mt-1">Program wsparcia oparty na 12 krokach, grupy wsparcia w całej Polsce. Strona: anonimowihazardzisci.pl</p>
+          </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-white mb-4">18+ ograniczenia wiekowe</h2>
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Gra w kasynie Vulkan Vegas dozwolona jest wyłącznie dla osób, które ukończyły 18. rok życia.
+          Kasyno stosuje weryfikację wieku podczas procesu KYC. Jeśli wiesz o osobie niepełnoletniej
+          grającej online, zgłoś to przez formularz kasyna lub bezpośrednio na policję.
         </p>
       </div>
-
-      <div className="space-y-10 text-white/70 text-sm leading-relaxed">
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Złote zasady odpowiedzialnej gry</h2>
-          <ul className="space-y-2">
-            {[
-              'Traktuj hazard jako rozrywkę — nigdy jako sposób na zarobek lub wyjście z problemów finansowych.',
-              'Przed sesją gry ustal budżet i nieprzekraczalny limit czasu. Trzymaj się ich bezwzględnie.',
-              'Nigdy nie graj pod wpływem alkoholu, substancji psychoaktywnych ani w stanie silnego stresu.',
-              'Nie staraj się "odrobić" strat — pościg za stratami jest jedną z najczęstszych przyczyn uzależnienia.',
-              'Rób regularne przerwy i obserwuj, ile czasu poświęcasz na grę każdego tygodnia.',
-              'Korzystaj wyłącznie z kasyn posiadających ważną licencję i certyfikowane oprogramowanie.',
-              'Pamiętaj, że kasyno zawsze ma przewagę statystyczną — wygrana w dłuższej perspektywie nie jest gwarantowana.',
-            ].map((rule) => (
-              <li key={rule} className="flex items-start gap-2">
-                <span className="text-gold mt-0.5 shrink-0">✓</span>
-                <span>{rule}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Czy hazard staje się problemem?</h2>
-          <p className="mb-3">
-            Uzależnienie od hazardu rozwija się stopniowo i często trudno je samodzielnie zauważyć.
-            Poniższe sygnały mogą wskazywać, że gra wymknęła się spod kontroli:
-          </p>
-          <ul className="space-y-2">
-            {[
-              'Myśli o grze zajmują Ci znaczną część dnia — planujesz kolejne sesje, analizujesz poprzednie.',
-              'Kwoty, którymi grasz, systematycznie rosną, by osiągnąć ten sam poziom emocji.',
-              'Podejmowałeś/-aś próby ograniczenia gry, ale nie udało Ci się ich dotrzymać.',
-              'Grasz, by uciec od problemów, nudy, lęku lub depresji.',
-              'Ukrywasz rozmiar wydatków na hazard przed bliskimi lub kłamiesz na ten temat.',
-              'Zaciągasz pożyczki lub sprzedajesz wartościowe rzeczy, żeby sfinansować grę.',
-              'Zaniedbujesz obowiązki zawodowe, rodzinne lub szkolne z powodu hazardu.',
-              'Po przegraniu odczuwasz silny przymus natychmiastowego powrotu do gry.',
-            ].map((sign) => (
-              <li key={sign} className="flex items-start gap-2">
-                <span className="text-red-400 mt-0.5 shrink-0">!</span>
-                <span>{sign}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-white/50">
-            Jeśli rozpoznajesz u siebie chociaż kilka z powyższych zachowań, nie zwlekaj —
-            skontaktuj się z jedną z organizacji pomocowych wymienionych poniżej.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Narzędzia kontroli dostępne w kasynach</h2>
-          <p className="mb-3">
-            Legalne kasyna online są zobowiązane przez regulatorów do udostępnienia graczom narzędzi
-            pozwalających kontrolować lub ograniczać swoje nawyki:
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              { title: 'Limit depozytu', desc: 'Dzienny, tygodniowy lub miesięczny pułap wpłat — kasyno odmówi przyjęcia kwoty przekraczającej limit.' },
-              { title: 'Limit strat', desc: 'Automatyczne wstrzymanie gry, gdy łączne straty osiągną ustalony próg w danym okresie.' },
-              { title: 'Limit sesji', desc: 'Automatyczne wylogowanie po upływie wybranego czasu gry (np. 1 h, 2 h).' },
-              { title: 'Przerwa chłodząca', desc: 'Czasowe zablokowanie konta na 24 h, 7 lub 30 dni bez możliwości wcześniejszego odwołania.' },
-              { title: 'Samowykluczenie', desc: 'Długoterminowe lub trwałe zamknięcie konta gracza — decyzja jest nieodwołalna przez wskazany okres.' },
-              { title: 'Powiadomienia o czasie gry', desc: 'Alerty co określony czas (np. co 60 minut) informujące o długości trwania sesji.' },
-            ].map((tool) => (
-              <div key={tool.title} className="rounded-lg p-3" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-                <p className="text-white font-semibold text-xs mb-1">{tool.title}</p>
-                <p className="text-white/50 text-xs">{tool.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-3 text-white/50">
-            Aby skorzystać z tych narzędzi, zaloguj się do swojego konta w kasynie i przejdź
-            do sekcji &bdquo;Odpowiedzialna gra&rdquo; lub &bdquo;Ustawienia konta&rdquo;.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Gdzie szukać pomocy w Polsce?</h2>
-          <p className="mb-4">
-            Poniższe organizacje oferują bezpłatne wsparcie dla osób uzależnionych od hazardu
-            i ich rodzin. Nie czekaj — pomoc jest dostępna teraz.
-          </p>
-          <div className="space-y-3">
-            <div className="rounded-xl p-4" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-              <p className="text-white font-bold mb-1">Telefon Zaufania dla Dorosłych w Kryzysie Emocjonalnym</p>
-              <p className="text-white/60 text-xs mb-1">
-                Telefon: <strong className="text-white">116 123</strong> — czynny całą dobę, 7 dni w tygodniu, bezpłatny
-              </p>
-              <p className="text-white/50 text-xs">
-                Wsparcie psychologiczne i pomoc w sytuacjach kryzysowych, w tym uzależnienia behawioralne.
-              </p>
-            </div>
-            <div className="rounded-xl p-4" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-              <p className="text-white font-bold mb-1">Krajowe Centrum Przeciwdziałania Uzależnieniom (KCPU)</p>
-              <p className="text-white/60 text-xs mb-1">
-                Strona: <a href="https://kcpu.gov.pl" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">kcpu.gov.pl</a>
-              </p>
-              <p className="text-white/50 text-xs">
-                Baza placówek leczenia uzależnień w całej Polsce, programy terapeutyczne i informacje prawne.
-              </p>
-            </div>
-            <div className="rounded-xl p-4" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-              <p className="text-white font-bold mb-1">Anonimowi Hazardziści — GA Polska</p>
-              <p className="text-white/60 text-xs mb-1">
-                Strona: <a href="https://www.hazardzisci.org" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">hazardzisci.org</a>
-              </p>
-              <p className="text-white/50 text-xs">
-                Wspólnota wzajemnej pomocy oparta na programie 12 kroków — spotkania w całej Polsce i online.
-              </p>
-            </div>
-            <div className="rounded-xl p-4" style={{ background: '#1a0000', border: '1px solid #3a0000' }}>
-              <p className="text-white font-bold mb-1">Fundacja Krok po Kroku</p>
-              <p className="text-white/60 text-xs mb-1">Telefon: <strong className="text-white">801 889 880</strong></p>
-              <p className="text-white/50 text-xs">
-                Terapia indywidualna i grupowa dla osób z problemem hazardowym oraz wsparcie dla ich rodzin.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-white font-bold text-lg mb-3">Ochrona nieletnich</h2>
-          <p>
-            Serwis VulkanSpiele jest dostępny wyłącznie dla osób, które ukończyły 18 rok życia.
-            Jeśli jesteś rodzicem lub opiekunem, skorzystaj z narzędzi kontroli rodzicielskiej,
-            aby uniemożliwić nieletnim dostęp do treści dotyczących hazardu:
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><a href="https://www.netnanny.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">Net Nanny</a> — blokowanie treści dla dorosłych</li>
-            <li><a href="https://www.cyberpatrol.com" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">CyberPatrol</a> — filtrowanie stron internetowych</li>
-            <li>Wbudowane narzędzia kontroli rodzicielskiej w systemach Windows 11, macOS, iOS i Android</li>
-          </ul>
-        </section>
-
-      </div>
-    </main>
+    </>
   )
 }
