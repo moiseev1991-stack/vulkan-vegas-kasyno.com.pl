@@ -47,6 +47,9 @@ export const metadata: Metadata = {
   verification: {
     google: GOOGLE_VERIFICATION,
   },
+  other: {
+    generator: 'WordPress 6.7.2',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,8 +58,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <JsonLd data={orgSchema} />
         <JsonLd data={websiteSchema} />
+        <link rel="https://api.w.org/" href="/wp-json/" />
+        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml" />
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+        <link rel="shortlink" href="/?p=1" />
       </head>
-      <body className="bg-bgDark text-white antialiased font-sans min-h-screen flex flex-col">
+      <body className="bg-bgDark text-white antialiased font-sans min-h-screen flex flex-col wp-singular page-template-default page wp-embed-responsive">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

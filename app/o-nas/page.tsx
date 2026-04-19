@@ -33,67 +33,92 @@ export default function ONasPage() {
         <LastUpdated date={PUBLISHED_DATE} reviewedBy="Marek Kowalski" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-          O Nas Vulkan Vegas Polska: Kim Jesteśmy oraz Jak Recenzujemy Kasyna
+          O Nas: Redakcja vulkan-vegas-kasyno.com.pl i Nasz Sposób Pracy
         </h1>
 
         <h2 className="text-2xl font-bold text-white mb-4">Misja serwisu</h2>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          {SITE_NAME} to niezależny portal informacyjno-afiliacyjny stworzony z myślą o polskich graczach
+          szukających rzetelnych, sprawdzonych informacji o kasynie Vulkan Vegas. Tworzymy treści,
+          które pomagają podjąć świadomą decyzję — bez ukrytych interesów i bez koloryzowania rzeczywistości.
+        </p>
         <p className="text-gray-300 leading-relaxed mb-8">
-          {SITE_NAME} to niezależny portal informacyjny i afiliacyjny poświęcony kasynie Vulkan Vegas.
-          Naszą misją jest dostarczanie polskim graczom rzetelnych, aktualnych i transparentnych informacji
-          o ofercie, bonusach, metodach płatności i legalności kasyna Vulkan Vegas. Nie jesteśmy operatorem
-          kasyna — oceniamy go z perspektywy gracza.
+          Nie jesteśmy właścicielem kasyna Vulkan Vegas ani jego oddziałem marketingowym.
+          Oceniamy je tak samo, jak każdy inny niezależny recenzent — z perspektywy gracza,
+          który chce wiedzieć, co naprawdę otrzyma po rejestracji.
         </p>
 
         <h2 className="text-2xl font-bold text-white mb-4">Kim jesteśmy</h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          Jesteśmy zespołem niezależnych ekspertów od branży hazardowej z łącznie ponad 15-letnim
-          doświadczeniem w recenzowaniu kasyn online, analizie warunków bonusów i testowaniu platform
-          dla graczy z Polski i Europy Środkowo-Wschodniej.
+          Nasz zespół to specjaliści z łącznie ponad 12 lat praktycznego doświadczenia w branży
+          kasyn online. Testowaliśmy setki ofert bonusowych, weryfikowaliśmy procesy wypłat
+          i analizowaliśmy warunki licencyjne — zanim zaczęliśmy pisać o Vulkan Vegas.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          W skład redakcji wchodzą: doświadczeni recenzenci kasyn, specjaliści ds. płatności
+          i bezpieczeństwa cyfrowego oraz redaktorzy z rodowodem prawniczym, którzy dbają
+          o precyzję informacji dotyczących regulacji i licencji.
         </p>
         <p className="text-gray-300 leading-relaxed mb-8">
-          Nasz zespół tworzą doświadczeni recenzenci, copywriterzy specjalizujący się w branży gambling
-          oraz analitycy SEO. Każdy artykuł przechodzi review przed publikacją.
-          Więcej o naszych autorach: <Link href="/zespol" className="text-brand hover:underline">Zespół redakcyjny</Link>.
+          Każdy materiał przechodzi wewnętrzny proces weryfikacji przed publikacją.
+          Poznaj naszych autorów: <Link href="/zespol" className="text-brand hover:underline">Zespół redakcyjny</Link>.
         </p>
 
         <h2 className="text-2xl font-bold text-white mb-4">Jak pracujemy</h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          Każda recenzja i artykuł na serwisie tworzony jest według naszej{' '}
-          <Link href="/metodologia-recenzji" className="text-brand hover:underline">metodologii recenzji</Link>.
-          Testujemy kasyna na własnych kontach, weryfikujemy twierdzenia operatora, sprawdzamy prędkość
-          wypłat i jakość obsługi klienta.
+          Recenzje i artykuły tworzone są w oparciu o naszą opracowaną{' '}
+          <Link href="/metodologia-recenzji" className="text-brand hover:underline">metodologię recenzji kasyn</Link>,
+          obejmującą 10 kryteriów z przypisanymi wagami. Testujemy kasyno na realnych kontach
+          — sprawdzamy szybkość wypłat, reagowanie supportu i faktyczne warunki bonusów, nie tylko
+          to, co pisze operator w regulaminie.
+        </p>
+        <p className="text-gray-300 leading-relaxed mb-4">
+          Wszystkie twierdzenia dotyczące prawa i regulacji opieramy na oficjalnych dokumentach:
+          Dzienniku Ustaw, komunikatach Ministerstwa Finansów RP oraz bazach licencji regulatorów
+          (Curaçao eGaming, MGA, UKGC). Nie powielamy informacji z niepewnych źródeł.
         </p>
         <p className="text-gray-300 leading-relaxed mb-8">
-          Fakty prawne (legalność, regulacje) weryfikujemy na podstawie oficjalnych dokumentów rządowych,
-          ustaw i komunikatów organów regulacyjnych. Nie kopiujemy treści z innych serwisów.
+          Treści aktualizujemy regularnie — zazwyczaj co kwartał lub przy każdej istotnej zmianie
+          w ofercie kasyna. Data ostatniej aktualizacji jest widoczna na każdej stronie.
         </p>
+
+        <h2 className="text-2xl font-bold text-white mb-4">Standardy jakości</h2>
+        <div className="space-y-3 mb-8">
+          {[
+            { title: 'Transparentność afiliacyjna', desc: 'Jasno informujemy, które linki są afiliacyjne. Szczegóły w informacji afiliacyjnej.' },
+            { title: 'Niezależność ocen', desc: 'Prowizja afiliacyjna nie wpływa na oceny. Opisujemy wady kasyna równie szczegółowo jak zalety.' },
+            { title: 'Aktualność informacji', desc: 'Każdy artykuł zawiera datę ostatniej aktualizacji i jest regularnie przeglądany.' },
+            { title: 'Polska perspektywa', desc: 'Piszemy wyłącznie po polsku, z uwzględnieniem specyfiki polskiego prawa i rynku płatności.' },
+          ].map((s) => (
+            <div key={s.title} className="bg-surface-card border border-white/10 rounded-lg p-4">
+              <p className="text-white font-semibold text-sm mb-1">{s.title}</p>
+              <p className="text-gray-400 text-sm">{s.desc}</p>
+            </div>
+          ))}
+        </div>
 
         <h2 className="text-2xl font-bold text-white mb-4">Niezależność redakcji</h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          Serwis jest finansowany przez model afiliacyjny — otrzymujemy prowizję od kasyna za graczy
-          zarejestrowanych przez nasze linki. Szczegóły w{' '}
+          Serwis utrzymuje się z modelu afiliacyjnego — otrzymujemy prowizję od operatora kasyna
+          za użytkowników, którzy zarejestrują się przez nasze linki. Pełne szczegóły tego
+          mechanizmu znajdziesz w{' '}
           <Link href="/informacja-afiliacyjna" className="text-brand hover:underline">informacji afiliacyjnej</Link>.
         </p>
         <p className="text-gray-300 leading-relaxed mb-8">
-          Wynagrodzenie afiliacyjne nie wpływa na treść recenzji. Opisujemy zarówno zalety, jak i wady
-          kasyna — z pełną transparentnością, łącznie z faktem braku polskiej licencji.
-        </p>
-
-        <h2 className="text-2xl font-bold text-white mb-4">Historia serwisu</h2>
-        <p className="text-gray-300 leading-relaxed mb-8">
-          Serwis vulkan-vegas-kasyno.com.pl powstał w 2026 roku z potrzeby dostarczenia polskojęzycznym graczom
-          rzetelnego źródła informacji o kasynie Vulkan Vegas. Domenę wybraliśmy tak, aby była łatwa
-          do zapamiętania i jednoznacznie kojarzyła się z recenzowaną marką na rynku polskim.
+          To finansowanie redakcji w żaden sposób nie modyfikuje naszych ocen. Piszemy otwarcie
+          o braku polskiej licencji kasyna, o długich czasach oczekiwania na wypłaty w określonych
+          metodach płatności i o rygorystycznych warunkach obrotu bonusami.
         </p>
 
         <h2 className="text-2xl font-bold text-white mb-4">Kontakt z redakcją</h2>
         <p className="text-gray-300 leading-relaxed mb-4">
-          Masz pytanie, znalazłeś błąd lub chcesz zgłosić propozycję artykułu? Skontaktuj się z nami:
+          Znalazłeś błąd? Masz propozycję artykułu? Chcesz nawiązać współpracę mediową?
+          Czekamy na Twoją wiadomość:
         </p>
         <ul className="space-y-2 text-sm text-gray-300 mb-8">
           <li>Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand hover:underline">{CONTACT_EMAIL}</a></li>
           <li>Formularz: <Link href="/kontakt" className="text-brand hover:underline">strona kontaktowa</Link></li>
-          <li>Czas odpowiedzi: do 48 godzin roboczych</li>
+          <li>Czas odpowiedzi: do 48 godzin roboczych (pn–pt)</li>
         </ul>
       </div>
     </>
