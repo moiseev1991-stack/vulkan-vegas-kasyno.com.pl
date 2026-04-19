@@ -100,11 +100,11 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/images/logo1.webp"
+            src="/images/logo2.png"
             alt="Vulkan Vegas"
-            width={160}
+            width={180}
             height={80}
-            className="object-contain h-20 w-auto"
+            className="object-contain h-16 w-auto"
             priority
           />
         </Link>
