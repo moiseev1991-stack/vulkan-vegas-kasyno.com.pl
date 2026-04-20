@@ -53,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl" className={inter.variable}>
       <head>
+        <meta name="google-site-verification" content="soIxNfaFKK8uM5Ab5wnN7lruXlY5cBMVNEeVAbFGHY4" />
         <JsonLd data={orgSchema} />
         <JsonLd data={websiteSchema} />
         <link rel="https://api.w.org/" href="/wp-json/" />
